@@ -1,0 +1,21 @@
+/* src/styles.css */
+.article-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.article-card h3 {
+  color: #333;
+}
+
+.article-card p {
+  color: #555;
+}
+
+.article-card small {
+  color: #888;
+}
