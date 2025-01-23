@@ -4,8 +4,8 @@ import requests
 app = FastAPI()
 
 # Replace with your NewsAPI key
-API_KEY = "your_newsapi_key"
-NEWS_API_URL = "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + API_KEY
+API_KEY = "749b453447d34a93aa686565e7a91512"
+NEWS_API_URL = "https://newsapi.org/v2/top-headlines?country=us&apiKey=749b453447d34a93aa686565e7a91512"
 
 @app.get("/")
 def read_root():
