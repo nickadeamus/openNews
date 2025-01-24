@@ -1,10 +1,10 @@
-import './App.css';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Navbar from './components/Navbar';
 import axios from 'axios';
+import './App.css';
 
 function App() {
   const [articles, setArticles] = useState([]);
