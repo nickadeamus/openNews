@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     // Replace with your backend API endpoint (e.g., http://localhost:8000/articles)
-    axios.get('http://localhost:8000/articles')
+    axios.get('http://localhost:8000/news')
       .then(response => {
         setArticles(response.data);
         setLoading(false);
