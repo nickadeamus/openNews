@@ -15,7 +15,7 @@ app.add_middleware(
 
 # Replace with your NewsAPI key
 API_KEY = "749b453447d34a93aa686565e7a91512"  # Add your API key here
-NEWS_API_URL = f"https://newsapi.org/v2/top-headlines?country=us&apiKey=749b453447d34a93aa686565e7a91512"
+NEWS_API_URL = f"https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=749b453447d34a93aa686565e7a91512"
 
 @app.get("/")
 def read_root():
