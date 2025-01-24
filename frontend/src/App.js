@@ -1,3 +1,4 @@
+import './App.css';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
@@ -24,6 +25,7 @@ function App() {
   }, []);
 
   return (
+   <div className="container">
     <Router>
       <Navbar />
       <Routes>
@@ -31,6 +33,7 @@ function App() {
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
+   </div> 
   );
 }
 

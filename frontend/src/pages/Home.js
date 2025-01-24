@@ -1,57 +1,40 @@
-// src/pages/Home.js
 import React, { useEffect, useState } from 'react';
 import NewsArticle from '../components/NewsArticle';
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch articles from the FastAPI backend
-    fetch('http://localhost:8000/api/articles')  // Ensure this URL is correct
+    fetch('http://localhost:8000/news')  // Make sure the API endpoint matches the backend route
       .then(response => {
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          throw new Error('Network response was not ok');
         }
         return response.json();
       })
-      .then(data => {
-        setArticles(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        setError(error.message);
-        setLoading(false);
-      });
+      .then(data => setArticles(data.articles))  // Access articles array from the response
+      .catch(error => console.error('Error fetching articles:', error));
   }, []);
 
   return (
     <div>
       <h2>Home Page - Latest News</h2>
-
-      {/* Show loading spinner */}
-      {loading && <p>Loading articles...</p>}
-
-      {/* Show error message if the API call fails */}
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-
-      {/* Render articles only when available */}
       {articles.length > 0 ? (
         articles.map((article, index) => (
           <NewsArticle
             key={index}
             title={article.title}
-            content={article.content}
+            content={article.description}
             author={article.author}
-            date={article.date}
+            date={article.publishedAt}
           />
         ))
       ) : (
-        !loading && !error && <p>No articles available.</p>
+        <p>Loading articles...</p>
       )}
     </div>
   );
 };
 
 export default Home;
+

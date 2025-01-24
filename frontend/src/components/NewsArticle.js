@@ -1,14 +1,15 @@
-// src/components/NewsArticle.js
 import React from 'react';
 
 const NewsArticle = ({ title, content, author, date }) => {
   return (
-    <div className="article-card" style={{ border: '1px solid #ddd', padding: '20px', margin: '10px', borderRadius: '8px' }}>
+    <div className="news-article">
       <h3>{title}</h3>
       <p>{content}</p>
-      <small>{author} | {date}</small>
+      <p><strong>By:</strong> {author || 'Unknown'}</p>
+      <p><small>{new Date(date).toLocaleDateString()}</small></p>
     </div>
   );
 };
 
 export default NewsArticle;
+
