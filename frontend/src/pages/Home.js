@@ -7,10 +7,7 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Use the environment variable set in docker-compose for API URL
-    const API_URL = process.env.REACT_APP_API_URL || 'http://backend:8000';
-
-    fetch(`${API_URL}/news`)
+    fetch(process.env.curl http://backend:8000 + '/news')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -18,12 +15,13 @@ const Home = () => {
         return response.json();
       })
       .then(data => {
-        setArticles(data.articles || []); // Ensure articles array exists
+        console.log("Fetched articles:", data);  // Debug log
+        setArticles(data.articles || []); // Ensure correct key
         setLoading(false);
       })
-      .catch(error => {
-        console.error('Error fetching articles:', error);
-        setError(error.message);
+      .catch(err => {
+        console.error('Error fetching articles:', err);
+        setError(err.message);
         setLoading(false);
       });
   }, []);
@@ -33,18 +31,18 @@ const Home = () => {
       <h2>Home Page - Latest News</h2>
       {loading && <p>Loading articles...</p>}
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-      {!loading && !error && articles.length > 0 ? (
+      {articles.length > 0 ? (
         articles.map((article, index) => (
           <NewsArticle
             key={index}
             title={article.title}
             content={article.description}
-            author={article.author || 'Unknown'}
-            date={article.publishedAt || 'No date available'}
+            author={article.author}
+            date={article.publishedAt}
           />
         ))
       ) : (
-        !loading && <p>No articles found.</p>
+        !loading && <p>No articles available.</p>
       )}
     </div>
   );
