@@ -7,7 +7,7 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(process.env.curl http://backend:8000 + '/news')
+    fetch(process.env.curl'http://backend:8000/news')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
