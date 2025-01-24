@@ -8,7 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     // Use the environment variable set in docker-compose for API URL
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+    const API_URL = process.env.REACT_APP_API_URL || 'http://backend:8000';
 
     fetch(`${API_URL}/news`)
       .then(response => {
